@@ -16,6 +16,7 @@ class TileType(Enum):
     FINISH = 3
 
     def __str__(self):
+        ''' For debug print on console '''
         tile_type_map = {
                 TileType.INVALID: "Invalid",
                 TileType.PATH: "Path",
@@ -27,6 +28,7 @@ class TileType(Enum):
 
 
 def tiles_type_one(data: str) -> TileType:
+    ''' returns tiles type for specific string for mazes of type one '''
     global maze_numbers
     if data.isdigit():
         return TileType.PATH
@@ -44,6 +46,7 @@ def tiles_type_one(data: str) -> TileType:
 
 
 def tiles_type_two(data: str) -> TileType:
+    ''' returns tiles type for specific string for mazes of type two '''
     global maze_numbers
     if data.isdigit():
         return TileType.PATH
@@ -99,6 +102,7 @@ class MapData:
                     self._end = (x, y)
 
     def __str__(self):
+        ''' For printing map data on console '''
         s = ""
         for row in self.data:
             s += "{"
@@ -139,11 +143,11 @@ class MapData:
     def get_end(self) -> (int, int):
         return self._end
 
-    def get_tile_at(self, x_y: (int, int)) -> TileType:
-        x = x_y[0]
-        y = x_y[1]
-        if x >= self._cols or y >= self._rows:
-            raise Exception("Out of bounds")
+    def get_tile_at(self, pos: (int, int)) -> TileType:
+        x = pos[0]
+        y = pos[1]
+        if x < 0 or x >= self._cols or y < 0 or y >= self._rows:
+            return TileType.WALL  # we assume a wall around the maze
         return self.data[y][x]
 
 
