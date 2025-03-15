@@ -21,10 +21,10 @@ def parse():
                     default=1,
                     help="Type of maze that is loaded, can be either 1 or 2")
     ap.add_argument('-d', '--delay',
-                    type=int,
+                    type=float,
                     required=False,
-                    default=1000,
-                    help="Delay between draw update in ms")
+                    default=0.5,
+                    help="Delay between draw update in seconds")
     return ap.parse_args()
 
 
