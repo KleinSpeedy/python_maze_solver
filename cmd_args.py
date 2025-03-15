@@ -25,6 +25,9 @@ def parse():
                     required=False,
                     default=0.5,
                     help="Delay between draw update in seconds")
+    ap.add_argument('-nq', '--no_quit',
+                    action='store_true',
+                    help="Program does not quit after reaching last tile")
     return ap.parse_args()
 
 

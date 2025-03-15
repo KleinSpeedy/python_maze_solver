@@ -70,4 +70,9 @@ if __name__ == "__main__":
         time.sleep(args.delay)
         gfx.event_loop()
 
+    if args.no_quit:
+        gfx.stop_prog = False
+        while not gfx.stop_prog:
+            gfx.event_loop()
+
     gfx.quit_prog()
